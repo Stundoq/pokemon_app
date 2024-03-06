@@ -94,7 +94,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: theme,
-      title: 'Pokemosadfn',
+      title: 'Pokemon',
       debugShowCheckedModeBanner: false,
       home: const SplashPage(),
 
