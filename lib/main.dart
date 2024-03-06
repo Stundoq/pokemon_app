@@ -18,6 +18,7 @@ import 'presentation/pages/pokemon_detail/pokemon_detail_viewmodel_imp.dart';
 import 'presentation/pages/splash/splash_page.dart';
 
 Future<void> main() async {
+
   ///Ensure that the Flutter bindings are initialized before starting the application.
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -31,6 +32,7 @@ Future<void> main() async {
   ///Initialize Hive database
   await Hive.initFlutter();
 
+
   ///Register the adapter for the 'PokemonItem' class to work with Hive.
   Hive.registerAdapter<PokemonItem>(PokemonItemAdapter());
 
@@ -40,11 +42,15 @@ Future<void> main() async {
   ///Initialize application dependencies using the 'di' (dependency injection) framework.
   di.initializeDependencies();
 
+
   ///Forces the app to be used only in portrait mode.
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((
+      _) {
     runApp(
+
       ///Configure EasyLocalization for language localization.
       EasyLocalization(
+
         ///Here is the list of languages supported by the app
         supportedLocales: const [
           Locale('en'),
@@ -73,10 +79,13 @@ Future<void> main() async {
 }
 
 /// Define a provider for the PokemonViewModel using the ChangeNotifierProvider.
-final pokemonViewModelImp = ChangeNotifierProvider<PokemonViewModel>((ref) => PokemonViewModelImp());
-final pokemonDetailViewModelImp = ChangeNotifierProvider<PokemonDetailViewModel>((ref) => PokemonDetailViewModelImp());
+final pokemonViewModelImp = ChangeNotifierProvider<PokemonViewModel>((ref) =>
+    PokemonViewModelImp());
+final pokemonDetailViewModelImp = ChangeNotifierProvider<
+    PokemonDetailViewModel>((ref) => PokemonDetailViewModelImp());
 
-final berryViewModelImp = ChangeNotifierProvider<BerryViewModel>((ref) => BerryViewModelImp());
+final berryViewModelImp = ChangeNotifierProvider<BerryViewModel>((ref) =>
+    BerryViewModelImp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -85,7 +94,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: theme,
-      title: 'Poksadasemon',
+      title: 'Pokemon',
       debugShowCheckedModeBanner: false,
       home: const SplashPage(),
 
