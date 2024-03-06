@@ -85,7 +85,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: theme,
-      title: 'Poksadasemon',
+      title: 'Pokdsadasemon',
       debugShowCheckedModeBanner: false,
       home: const SplashPage(),
 
