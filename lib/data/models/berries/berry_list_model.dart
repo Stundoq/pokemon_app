@@ -1,13 +1,14 @@
 import 'package:hive_flutter/adapters.dart';
-
 import '../../../domain/entities/berry_entities/berry_item_entity.dart';
 import '../../../domain/entities/berry_entities/berry_list_entity.dart';
+part 'berry_list_model.g.dart';
+
 
 class BerryListModel {
   final int count;
   final String? next;
   final String? previous;
-  final List<PokemonItem> results;
+  final List<BerryItem> results;
 
   BerryListModel({
     required this.count,
@@ -20,7 +21,7 @@ class BerryListModel {
     count: json["count"],
     next: json["next"],
     previous: json["previous"],
-    results: List<PokemonItem>.from(json["results"].map((x) => PokemonItem.fromJson(x))),
+    results: List<BerryItem>.from(json["results"].map((x) => BerryItem.fromJson(x))),
   );
 
   BerryListEntity convertToEntity() {
@@ -32,18 +33,18 @@ class BerryListModel {
 }
 
 @HiveType(typeId: 1)
-class PokemonItem extends BerryItemEntity{
+class BerryItem extends BerryItemEntity{
   @HiveField(0)
   final String name;
   @HiveField(1)
   final String url;
 
-  const PokemonItem({
+  const BerryItem({
     required this.name,
     required this.url,
   }):super(name: name,url: url);
 
-  factory PokemonItem.fromJson(Map<String, dynamic> json) => PokemonItem(
+  factory BerryItem.fromJson(Map<String, dynamic> json) => BerryItem(
     name: json["name"],
     url: json["url"],
   );

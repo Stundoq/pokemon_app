@@ -28,11 +28,11 @@ class _SplashPageState extends ConsumerState<SplashPage> {
   init() {
     SchedulerBinding.instance.addPostFrameCallback((_) {
       ref.read(pokemonViewModelImp).getPokemon().then((value) {
-        const App().fadeTransitionReplace(context: context);
+        ref.read(berryViewModelImp).getBerry().then((value) {
+          const App().fadeTransitionReplace(context: context);
+        });
       });
-      ref.read(berryViewModelImp).getBerry().then((value) {
-        const App().fadeTransitionReplace(context: context);
-      });
+
     });
   }
 

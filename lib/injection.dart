@@ -33,13 +33,16 @@ void initializeDependencies() async {
   injector.registerLazySingleton<http.Client>(() => http.Client());
 
   //Api helper
-  injector.registerLazySingleton<ApiBaseHelper>(() => ApiBaseHelper(client: injector()));
+  injector.registerLazySingleton<ApiBaseHelper>(
+      () => ApiBaseHelper(client: injector()));
 
   //Api
-  injector.registerLazySingleton<RemoteDataSource>(() => RemoteDataSourceImp(apiBaseHelper: injector()));
+  injector.registerLazySingleton<RemoteDataSource>(
+      () => RemoteDataSourceImp(apiBaseHelper: injector()));
 
   //local
-  injector.registerLazySingleton<LocalDataSource>(() => LocalDataSourceImp(box: injector()));
+  injector.registerLazySingleton<LocalDataSource>(
+      () => LocalDataSourceImp(box: injector()));
 
   //Repository
   injector.registerLazySingleton<PokemonRepository>(
@@ -50,19 +53,35 @@ void initializeDependencies() async {
   );
 
   injector.registerLazySingleton<BerryRepository>(
-        () => BerryRepositoryImpl(
+    () => BerryRepositoryImpl(
       remoteDataSourceImp: injector(),
+      localDataSourceImp: injector(),
     ),
   );
 
   //Usecases
   injector.registerLazySingleton<GetPokemon>(() => GetPokemon(injector()));
-  injector.registerLazySingleton<IsPokemonInFavorites>(() => IsPokemonInFavorites(injector()));
-  injector.registerLazySingleton<AddPokemonByName>(() => AddPokemonByName(injector()));
-  injector.registerLazySingleton<RemovePokemonByName>(() => RemovePokemonByName(injector()));
-  injector.registerLazySingleton<GetPokemonItemList>(() => GetPokemonItemList(injector()));
-  injector.registerLazySingleton<ClearAllFavoritePokemon>(() => ClearAllFavoritePokemon(injector()));
-  injector.registerLazySingleton<GetPokemonByName>(() => GetPokemonByName(injector()));
+  injector.registerLazySingleton<IsPokemonInFavorites>(
+      () => IsPokemonInFavorites(injector()));
+  injector.registerLazySingleton<AddPokemonByName>(
+      () => AddPokemonByName(injector()));
+  injector.registerLazySingleton<RemovePokemonByName>(
+      () => RemovePokemonByName(injector()));
+  injector.registerLazySingleton<GetPokemonItemList>(
+      () => GetPokemonItemList(injector()));
+  injector.registerLazySingleton<ClearAllFavoritePokemon>(
+      () => ClearAllFavoritePokemon(injector()));
+  injector.registerLazySingleton<GetPokemonByName>(
+      () => GetPokemonByName(injector()));
   injector.registerLazySingleton<GetBerry>(() => GetBerry(injector()));
-
+  injector.registerLazySingleton<GetBerryItemList>(
+          () => GetBerryItemList(injector()));
+  injector.registerLazySingleton<IsBerryInFavorites>(
+          () => IsBerryInFavorites(injector()));
+  injector.registerLazySingleton<ClearAllFavoriteBerry>(
+          () => ClearAllFavoriteBerry(injector()));
+  injector.registerLazySingleton<AddBerryByName>(
+          () => AddBerryByName(injector()));
+  injector.registerLazySingleton<RemoveBerryByName>(
+          () => RemoveBerryByName(injector()));
 }

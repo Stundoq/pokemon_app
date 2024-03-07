@@ -9,6 +9,7 @@ import 'package:flutter_tdd_clean_architecture_mvvm/presentation/pages/berry/ber
 import 'package:hive_flutter/hive_flutter.dart';
 import 'core/certificates/network_certificates.dart';
 import 'core/theme/my_theme.dart';
+import 'data/models/berries/berry_list_model.dart';
 import 'data/models/pokemon_list_model.dart';
 import 'injection.dart' as di;
 import 'presentation/pages/pokemon/pokemon_viewmodel.dart';
@@ -33,9 +34,11 @@ Future<void> main() async {
 
   ///Register the adapter for the 'PokemonItem' class to work with Hive.
   Hive.registerAdapter<PokemonItem>(PokemonItemAdapter());
+  Hive.registerAdapter<BerryItem>(BerryItemAdapter());
 
   ///Open a Hive box named "pokemon" for data storage and retrieval.
   await Hive.openBox("pokemon");
+  await Hive.openBox("berry");
 
   ///Initialize application dependencies using the 'di' (dependency injection) framework.
   di.initializeDependencies();

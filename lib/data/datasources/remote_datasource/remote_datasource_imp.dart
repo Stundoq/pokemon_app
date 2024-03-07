@@ -33,7 +33,7 @@ class RemoteDataSourceImp implements RemoteDataSource {
 
   @override
   Future<BerryListModel> getBerry(String? url) async {
-    var queryString = url ?? Constants.baseUrl;
+    var queryString = url ?? Constants.berryUrl;
 
     var response = await apiBaseHelper.get(url: queryString, header: _header);
     return BerryListModel.fromJson(response);

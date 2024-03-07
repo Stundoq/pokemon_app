@@ -432,7 +432,7 @@
         <entry key="mockito">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/mockito-5.4.2/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/mockito-5.4.4/lib" />
             </list>
           </value>
         </entry>
@@ -832,7 +832,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/material_color_utilities-0.8.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/meta-1.11.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/mime-1.0.4/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/mockito-5.4.2/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/mockito-5.4.4/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/package_config-2.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path-1.9.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/path_drawing-0.5.1+1/lib" />

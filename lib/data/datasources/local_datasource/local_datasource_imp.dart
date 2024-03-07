@@ -1,4 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
+import '../../models/berries/berry_list_model.dart';
 import '../../models/pokemon_list_model.dart';
 import 'local_datasource.dart';
 
@@ -40,5 +41,40 @@ class LocalDataSourceImp implements LocalDataSource {
   @override
   Future<int> clearAllFavoritePokemon() async {
     return await box.clear();
+  }
+
+  @override
+  Future<int> clearAllFavoriteBerry() async {
+    return await box.clear();
+  }
+
+  @override
+  List<BerryItem> getFavoriteBerryList() {
+    List<BerryItem> berryList = [];
+    for (var key in box.keys) {
+      final berryItem = box.get(key);
+      if (berryItem is BerryItem) {
+        berryList.add(berryItem);
+      }
+    }
+    return berryList;
+  }
+
+  @override
+  BerryItem? isBerryInFavorites(String key) {
+    BerryItem? berryItem = box.get(key);
+    return berryItem;
+  }
+
+  @override
+  Future<BerryItem?> addBerryByName(BerryItem berryItem) async {
+    await box.put(berryItem.name, berryItem);
+    return box.get(berryItem.name);
+  }
+
+  @override
+  Future<BerryItem?> removeBerryByName(String key) async {
+    await box.delete(key);
+    return box.get(key);
   }
 }
