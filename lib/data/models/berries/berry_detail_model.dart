@@ -1,19 +1,26 @@
-import 'dart:convert';
-
-import '../../../domain/entities/berry_entities/berry_detail_entity.dart';
-import '../../../domain/entities/berry_entities/flavor_entity.dart';
+import 'package:flutter_tdd_clean_architecture_mvvm/domain/entities/berry_entities/berry_detail_entity.dart';
+import 'package:flutter_tdd_clean_architecture_mvvm/domain/entities/berry_entities/flavor_entity.dart';
 
 class BerryDetailModel extends BerryDetailEntity {
+  @override
   final int id;
+  @override
   final String name;
+  @override
   final int growthTime;
   final int maxHarvest;
+  @override
   final int naturalGiftPower;
+  @override
   final int size;
+  @override
   final int smoothness;
+  @override
   final int soilDryness;
   final Firmness firmness;
-  final List<Flavor> flavors;
+  final List<Flavors> flavors;
+  final Item item;
+  final NaturalGiftType naturalGiftType;
 
   BerryDetailModel({
     required this.id,
@@ -26,29 +33,47 @@ class BerryDetailModel extends BerryDetailEntity {
     required this.soilDryness,
     required this.firmness,
     required this.flavors,
+    required this.item,
+    required this.naturalGiftType,
   }) : super(
           id: id,
           name: name,
           growthTime: growthTime,
           naturalGiftPower: naturalGiftPower,
-          size:size,
+          size: size,
           smoothness: smoothness,
           soilDryness: soilDryness,
-          firmness: firmness,
-          flavor: getBaseFlavor(flavors),
+          firmnessType: firmness.name,
+          flavor: getBaseStat(flavors),
         );
 
-  static FlavorEntity getBaseFlavor(List<Flavor> stats) => FlavorEntity(
-        sour: getFlavor(stats, 'sour'),
-        spicy: getFlavor(stats, 'spicy'),
-        dry: getFlavor(stats, 'dry'),
-        sweet: getFlavor(stats, 'sweet'),
-        bitter: getFlavor(stats, 'bitter'),
-      );
-
-  static int getFlavor(List<Flavor> stats, String statName) {
-    return stats.firstWhere((s) => s.stat.name == statName).baseStat;
+  factory BerryDetailModel.fromJson(Map<String, dynamic> json) {
+    return BerryDetailModel(
+      id: json['id'],
+      name: json['name'],
+      growthTime: json['growth_time'],
+      maxHarvest: json['max_harvest'],
+      naturalGiftPower: json['natural_gift_power'],
+      size: json['size'],
+      smoothness: json['smoothness'],
+      soilDryness: json['soil_dryness'],
+      firmness: Firmness.fromJson(json['firmness']),
+      flavors: List<Flavors>.from(json["flavors"].map((x) => Flavors.fromJson(x))),
+      item: Item.fromJson(json['item']),
+      naturalGiftType: NaturalGiftType.fromJson(json['natural_gift_type']),
+    );
   }
+  static int getStat(List<Flavors> flavors, String flavorName) {
+    return flavors.firstWhere((s) => s.flavor.name == flavorName).potency;
+  }
+
+  static FlavorEntity getBaseStat(List<Flavors> flavors) => FlavorEntity(
+        sour: getStat(flavors, 'sour'),
+        spicy: getStat(flavors, 'spicy'),
+        dry: getStat(flavors, 'dry'),
+        sweet: getStat(flavors, 'sweet'),
+        bitter: getStat(flavors, 'bitter'),
+      );
 
   BerryDetailEntity convertToEntity() {
     return BerryDetailEntity(
@@ -59,32 +84,15 @@ class BerryDetailModel extends BerryDetailEntity {
       size: size,
       smoothness: smoothness,
       soilDryness: soilDryness,
-      firmness: firmness,
+      firmnessType: firmnessType,
       flavor: flavor,
-    );
-  }
-
-  factory BerryDetailModel.fromJson(Map<String, dynamic> json) {
-    return BerryDetailModel(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      growthTime: json['growth_time'] as int,
-      maxHarvest: json['max_harvest'] as int,
-      naturalGiftPower: json['natural_gift_power'] as int,
-      size: json['size'] as int,
-      smoothness: json['smoothness'] as int,
-      soilDryness: json['soil_dryness'] as int,
-      firmness: Firmness.fromJson(json['firmness'] as Map<String, dynamic>),
-      flavors: (json['flavors'] as List<dynamic>)
-          .map((e) => Flavor.fromJson(e as Map<String, dynamic>))
-          .toList(),
     );
   }
 }
 
 class Firmness {
-  final String name;
-  final String url;
+  String name;
+  String url;
 
   Firmness({
     required this.name,
@@ -93,15 +101,15 @@ class Firmness {
 
   factory Firmness.fromJson(Map<String, dynamic> json) {
     return Firmness(
-      name: json['name'] as String,
-      url: json['url'] as String,
+      name: json['name'],
+      url: json['url'],
     );
   }
 }
 
 class Flavors {
-  final int potency;
-  final Flavor flavor;
+  int potency;
+  Flavor flavor;
 
   Flavors({
     required this.potency,
@@ -110,15 +118,15 @@ class Flavors {
 
   factory Flavors.fromJson(Map<String, dynamic> json) {
     return Flavors(
-      potency: json['potency'] as int,
-      flavor: Flavor.fromJson(json['flavor'] as Map<String, dynamic>),
+      potency: json['potency'],
+      flavor: Flavor.fromJson(json['flavor']),
     );
   }
 }
 
 class Flavor {
-  final String name;
-  final String url;
+  String name;
+  String url;
 
   Flavor({
     required this.name,
@@ -127,15 +135,15 @@ class Flavor {
 
   factory Flavor.fromJson(Map<String, dynamic> json) {
     return Flavor(
-      name: json['name'] as String,
-      url: json['url'] as String,
+      name: json['name'],
+      url: json['url'],
     );
   }
 }
 
 class Item {
-  final String name;
-  final String url;
+  String name;
+  String url;
 
   Item({
     required this.name,
@@ -144,15 +152,15 @@ class Item {
 
   factory Item.fromJson(Map<String, dynamic> json) {
     return Item(
-      name: json['name'] as String,
-      url: json['url'] as String,
+      name: json['name'],
+      url: json['url'],
     );
   }
 }
 
 class NaturalGiftType {
-  final String name;
-  final String url;
+  String name;
+  String url;
 
   NaturalGiftType({
     required this.name,
@@ -161,8 +169,8 @@ class NaturalGiftType {
 
   factory NaturalGiftType.fromJson(Map<String, dynamic> json) {
     return NaturalGiftType(
-      name: json['name'] as String,
-      url: json['url'] as String,
+      name: json['name'],
+      url: json['url'],
     );
   }
 }

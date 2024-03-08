@@ -11,19 +11,20 @@ class BerryDetailEntity extends Equatable {
   final int size;
   final int smoothness;
   final int soilDryness;
-  final Firmness firmness;
+  final String firmnessType;
   final FlavorEntity flavor;
 
-  const BerryDetailEntity(
-      {required this.id,
-      required this.name,
-      required this.growthTime,
-      required this.naturalGiftPower,
-      required this.size,
-      required this.smoothness,
-      required this.soilDryness,
-      required this.firmness,
-      required this.flavor,});
+  const BerryDetailEntity({
+    required this.id,
+    required this.name,
+    required this.growthTime,
+    required this.naturalGiftPower,
+    required this.size,
+    required this.smoothness,
+    required this.soilDryness,
+    required this.firmnessType,
+    required this.flavor,
+  });
 
   @override
   List<Object?> get props => [id, name];

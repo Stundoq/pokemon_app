@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_tdd_clean_architecture_mvvm/domain/entities/berry_entities/berry_detail_entity.dart';
+import 'package:flutter_tdd_clean_architecture_mvvm/presentation/pages/berry_detail/flavor_attributes.dart';
 
 import '../../../core/api_helper/api_response.dart';
 
-abstract class BerryDetailViewModel with ChangeNotifier{
-
+abstract class BerryDetailViewModel with ChangeNotifier {
   ApiResponse<BerryDetailEntity> get getBerryByNameResponse;
 
   set getBerryByNameResponse(ApiResponse<BerryDetailEntity> value);
@@ -15,7 +15,7 @@ abstract class BerryDetailViewModel with ChangeNotifier{
 
   String getBerryName();
 
-  String getFirmness();
+  FlavorAttributes getBerryAttributes();
 
-  String getBerryFlavor();
+  String getFirmnessType();
 }

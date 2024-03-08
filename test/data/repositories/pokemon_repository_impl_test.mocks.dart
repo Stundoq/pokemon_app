@@ -3,11 +3,13 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i6;
+import 'dart:async' as _i7;
 
 import 'package:flutter_tdd_clean_architecture_mvvm/data/datasources/local_datasource/local_datasource.dart'
-    as _i7;
+    as _i8;
 import 'package:flutter_tdd_clean_architecture_mvvm/data/datasources/remote_datasource/remote_datasource.dart'
+    as _i6;
+import 'package:flutter_tdd_clean_architecture_mvvm/data/models/berries/berry_detail_model.dart'
     as _i5;
 import 'package:flutter_tdd_clean_architecture_mvvm/data/models/berries/berry_list_model.dart'
     as _i4;
@@ -63,68 +65,96 @@ class _FakeBerryListModel_2 extends _i1.SmartFake
         );
 }
 
+class _FakeBerryDetailModel_3 extends _i1.SmartFake
+    implements _i5.BerryDetailModel {
+  _FakeBerryDetailModel_3(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [RemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockRemoteDataSource extends _i1.Mock implements _i5.RemoteDataSource {
+class MockRemoteDataSource extends _i1.Mock implements _i6.RemoteDataSource {
   MockRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i6.Future<_i2.PokemonListModel> getPokemon(String? url) =>
+  _i7.Future<_i2.PokemonListModel> getPokemon(String? url) =>
       (super.noSuchMethod(
         Invocation.method(
           #getPokemon,
           [url],
         ),
         returnValue:
-            _i6.Future<_i2.PokemonListModel>.value(_FakePokemonListModel_0(
+            _i7.Future<_i2.PokemonListModel>.value(_FakePokemonListModel_0(
           this,
           Invocation.method(
             #getPokemon,
             [url],
           ),
         )),
-      ) as _i6.Future<_i2.PokemonListModel>);
+      ) as _i7.Future<_i2.PokemonListModel>);
 
   @override
-  _i6.Future<_i3.PokemonDetailModel> getPokemonByName(String? name) =>
+  _i7.Future<_i3.PokemonDetailModel> getPokemonByName(String? name) =>
       (super.noSuchMethod(
         Invocation.method(
           #getPokemonByName,
           [name],
         ),
         returnValue:
-            _i6.Future<_i3.PokemonDetailModel>.value(_FakePokemonDetailModel_1(
+            _i7.Future<_i3.PokemonDetailModel>.value(_FakePokemonDetailModel_1(
           this,
           Invocation.method(
             #getPokemonByName,
             [name],
           ),
         )),
-      ) as _i6.Future<_i3.PokemonDetailModel>);
+      ) as _i7.Future<_i3.PokemonDetailModel>);
 
   @override
-  _i6.Future<_i4.BerryListModel> getBerry(String? url) => (super.noSuchMethod(
+  _i7.Future<_i4.BerryListModel> getBerry(String? url) => (super.noSuchMethod(
         Invocation.method(
           #getBerry,
           [url],
         ),
-        returnValue: _i6.Future<_i4.BerryListModel>.value(_FakeBerryListModel_2(
+        returnValue: _i7.Future<_i4.BerryListModel>.value(_FakeBerryListModel_2(
           this,
           Invocation.method(
             #getBerry,
             [url],
           ),
         )),
-      ) as _i6.Future<_i4.BerryListModel>);
+      ) as _i7.Future<_i4.BerryListModel>);
+
+  @override
+  _i7.Future<_i5.BerryDetailModel> getBerryByName(String? name) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getBerryByName,
+          [name],
+        ),
+        returnValue:
+            _i7.Future<_i5.BerryDetailModel>.value(_FakeBerryDetailModel_3(
+          this,
+          Invocation.method(
+            #getBerryByName,
+            [name],
+          ),
+        )),
+      ) as _i7.Future<_i5.BerryDetailModel>);
 }
 
 /// A class which mocks [LocalDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLocalDataSource extends _i1.Mock implements _i7.LocalDataSource {
+class MockLocalDataSource extends _i1.Mock implements _i8.LocalDataSource {
   MockLocalDataSource() {
     _i1.throwOnMissingStub(this);
   }
@@ -137,24 +167,24 @@ class MockLocalDataSource extends _i1.Mock implements _i7.LocalDataSource {
       )) as _i2.PokemonItem?);
 
   @override
-  _i6.Future<_i2.PokemonItem?> addPokemonByName(_i2.PokemonItem? pokemonItem) =>
+  _i7.Future<_i2.PokemonItem?> addPokemonByName(_i2.PokemonItem? pokemonItem) =>
       (super.noSuchMethod(
         Invocation.method(
           #addPokemonByName,
           [pokemonItem],
         ),
-        returnValue: _i6.Future<_i2.PokemonItem?>.value(),
-      ) as _i6.Future<_i2.PokemonItem?>);
+        returnValue: _i7.Future<_i2.PokemonItem?>.value(),
+      ) as _i7.Future<_i2.PokemonItem?>);
 
   @override
-  _i6.Future<_i2.PokemonItem?> removePokemonByName(String? key) =>
+  _i7.Future<_i2.PokemonItem?> removePokemonByName(String? key) =>
       (super.noSuchMethod(
         Invocation.method(
           #removePokemonByName,
           [key],
         ),
-        returnValue: _i6.Future<_i2.PokemonItem?>.value(),
-      ) as _i6.Future<_i2.PokemonItem?>);
+        returnValue: _i7.Future<_i2.PokemonItem?>.value(),
+      ) as _i7.Future<_i2.PokemonItem?>);
 
   @override
   List<_i2.PokemonItem> getFavoritePokemonList() => (super.noSuchMethod(
@@ -166,22 +196,22 @@ class MockLocalDataSource extends _i1.Mock implements _i7.LocalDataSource {
       ) as List<_i2.PokemonItem>);
 
   @override
-  _i6.Future<int> clearAllFavoritePokemon() => (super.noSuchMethod(
+  _i7.Future<int> clearAllFavoritePokemon() => (super.noSuchMethod(
         Invocation.method(
           #clearAllFavoritePokemon,
           [],
         ),
-        returnValue: _i6.Future<int>.value(0),
-      ) as _i6.Future<int>);
+        returnValue: _i7.Future<int>.value(0),
+      ) as _i7.Future<int>);
 
   @override
-  _i6.Future<int> clearAllFavoriteBerry() => (super.noSuchMethod(
+  _i7.Future<int> clearAllFavoriteBerry() => (super.noSuchMethod(
         Invocation.method(
           #clearAllFavoriteBerry,
           [],
         ),
-        returnValue: _i6.Future<int>.value(0),
-      ) as _i6.Future<int>);
+        returnValue: _i7.Future<int>.value(0),
+      ) as _i7.Future<int>);
 
   @override
   List<_i4.BerryItem> getFavoriteBerryList() => (super.noSuchMethod(
@@ -200,12 +230,22 @@ class MockLocalDataSource extends _i1.Mock implements _i7.LocalDataSource {
       )) as _i4.BerryItem?);
 
   @override
-  _i6.Future<_i4.BerryItem?> addBerryByName(_i4.BerryItem? berryItem) =>
+  _i7.Future<_i4.BerryItem?> addBerryByName(_i4.BerryItem? berryItem) =>
       (super.noSuchMethod(
         Invocation.method(
           #addBerryByName,
           [berryItem],
         ),
-        returnValue: _i6.Future<_i4.BerryItem?>.value(),
-      ) as _i6.Future<_i4.BerryItem?>);
+        returnValue: _i7.Future<_i4.BerryItem?>.value(),
+      ) as _i7.Future<_i4.BerryItem?>);
+
+  @override
+  _i7.Future<_i4.BerryItem?> removeBerryByName(String? key) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #removeBerryByName,
+          [key],
+        ),
+        returnValue: _i7.Future<_i4.BerryItem?>.value(),
+      ) as _i7.Future<_i4.BerryItem?>);
 }

@@ -3,12 +3,12 @@ import 'package:flutter_tdd_clean_architecture_mvvm/domain/entities/berry_entiti
 import 'package:flutter_tdd_clean_architecture_mvvm/domain/entities/berry_entities/flavor_entity.dart';
 import 'package:flutter_tdd_clean_architecture_mvvm/domain/usecases/berries/berry_usecases.dart';
 import 'package:flutter_tdd_clean_architecture_mvvm/presentation/pages/berry_detail/berry_detail_viewmodel.dart';
+import 'package:flutter_tdd_clean_architecture_mvvm/presentation/pages/berry_detail/flavor_attributes.dart';
 
 import '../../../core/api_helper/api_response.dart';
 import '../../../injection.dart';
 
-class BerryDetailViewModelImp with ChangeNotifier implements BerryDetailViewModel{
-
+class BerryDetailViewModelImp with ChangeNotifier implements BerryDetailViewModel {
   ApiResponse<BerryDetailEntity> _getBerryByNameResponse = ApiResponse.loading('loading');
 
   @override
@@ -19,7 +19,6 @@ class BerryDetailViewModelImp with ChangeNotifier implements BerryDetailViewMode
     _getBerryByNameResponse = value;
     notifyListeners();
   }
-
 
   @override
   Future<void> getBerryByName({
@@ -38,18 +37,25 @@ class BerryDetailViewModelImp with ChangeNotifier implements BerryDetailViewMode
   }
 
   @override
-  String getBerryName(){
+  String getBerryName() {
     return getBerryByNameResponse.data.name;
   }
 
   @override
-  String getFirmness(){
-    return getBerryByNameResponse.data.firmness.name;
+  FlavorAttributes getBerryAttributes() {
+    final FlavorEntity baseStat = getBerryByNameResponse.data.flavor;
+    final stats = FlavorAttributes(
+      sour: baseStat.sour,
+      spicy: baseStat.spicy,
+      dry: baseStat.dry,
+      sweet: baseStat.sweet,
+      bitter: baseStat.bitter,
+    );
+    return stats;
   }
 
   @override
-  String getFlavorImage(){
-    final FlavorEntity flavors = getBerryByNameResponse.data.flavors;
-
+  String getFirmnessType() {
+    return getBerryByNameResponse.data.firmnessType;
   }
 }
