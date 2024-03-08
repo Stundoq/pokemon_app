@@ -36,16 +36,16 @@ class BerryDetailModel extends BerryDetailEntity {
     required this.item,
     required this.naturalGiftType,
   }) : super(
-          id: id,
-          name: name,
-          growthTime: growthTime,
-          naturalGiftPower: naturalGiftPower,
-          size: size,
-          smoothness: smoothness,
-          soilDryness: soilDryness,
-          firmnessType: firmness.name,
-          flavor: getBaseStat(flavors),
-        );
+            id: id,
+            name: name,
+            growthTime: growthTime,
+            naturalGiftPower: naturalGiftPower,
+            size: size,
+            smoothness: smoothness,
+            soilDryness: soilDryness,
+            firmnessType: firmness.name,
+            flavor: getBaseStat(flavors),
+            naturalGiftName: naturalGiftType.name);
 
   factory BerryDetailModel.fromJson(Map<String, dynamic> json) {
     return BerryDetailModel(
@@ -58,11 +58,13 @@ class BerryDetailModel extends BerryDetailEntity {
       smoothness: json['smoothness'],
       soilDryness: json['soil_dryness'],
       firmness: Firmness.fromJson(json['firmness']),
-      flavors: List<Flavors>.from(json["flavors"].map((x) => Flavors.fromJson(x))),
+      flavors:
+          List<Flavors>.from(json["flavors"].map((x) => Flavors.fromJson(x))),
       item: Item.fromJson(json['item']),
       naturalGiftType: NaturalGiftType.fromJson(json['natural_gift_type']),
     );
   }
+
   static int getStat(List<Flavors> flavors, String flavorName) {
     return flavors.firstWhere((s) => s.flavor.name == flavorName).potency;
   }
@@ -86,6 +88,7 @@ class BerryDetailModel extends BerryDetailEntity {
       soilDryness: soilDryness,
       firmnessType: firmnessType,
       flavor: flavor,
+      naturalGiftName: naturalGiftName
     );
   }
 }

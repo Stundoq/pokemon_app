@@ -18,4 +18,12 @@ abstract class BerryDetailViewModel with ChangeNotifier {
   FlavorAttributes getBerryAttributes();
 
   String getFirmnessType();
+
+  int getBerrySize();
+
+  int getSmoothness();
+
+  String getNaturalGiftName();
+
+  double getNaturalGiftPower();
 }

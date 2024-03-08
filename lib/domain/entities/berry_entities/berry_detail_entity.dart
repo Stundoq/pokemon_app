@@ -13,6 +13,7 @@ class BerryDetailEntity extends Equatable {
   final int soilDryness;
   final String firmnessType;
   final FlavorEntity flavor;
+  final String naturalGiftName;
 
   const BerryDetailEntity({
     required this.id,
@@ -24,6 +25,7 @@ class BerryDetailEntity extends Equatable {
     required this.soilDryness,
     required this.firmnessType,
     required this.flavor,
+    required this.naturalGiftName
   });
 
   @override

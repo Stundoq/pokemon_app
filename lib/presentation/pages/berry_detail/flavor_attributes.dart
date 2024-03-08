@@ -1,9 +1,9 @@
 class FlavorAttributes {
-  final int sour;
-  final int spicy;
-  final int dry;
-  final int sweet;
-  final int bitter;
+  final double sour;
+  final double spicy;
+  final double dry;
+  final double sweet;
+  final double bitter;
 
   const FlavorAttributes({
     required this.sour,
