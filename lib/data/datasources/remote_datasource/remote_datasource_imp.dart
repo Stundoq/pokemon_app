@@ -1,3 +1,4 @@
+import 'package:flutter_tdd_clean_architecture_mvvm/data/models/berries/berry_detail_model.dart';
 import 'package:flutter_tdd_clean_architecture_mvvm/data/models/berries/berry_list_model.dart';
 
 import '../../../core/api_helper/api_base_helper.dart';
@@ -37,6 +38,14 @@ class RemoteDataSourceImp implements RemoteDataSource {
 
     var response = await apiBaseHelper.get(url: queryString, header: _header);
     return BerryListModel.fromJson(response);
+  }
+
+  @override
+  Future<BerryDetailModel> getBerryByName(String name) async {
+    String queryString = '${Constants.berryUrl}/$name';
+
+    var response = await apiBaseHelper.get(url: queryString, header: _header);
+    return BerryDetailModel.fromJson(response);
   }
 
 }

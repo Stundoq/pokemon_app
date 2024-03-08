@@ -186,7 +186,7 @@ class _PokemonDetailPageState extends ConsumerState<PokemonDetailPage> {
     );
   }
 
-  Widget _body(PokemonDetailViewModel pokemonDetailViewModel) {
+    Widget _body(PokemonDetailViewModel pokemonDetailViewModel) {
     if (pokemonDetailViewModel.getPokemonByNameResponse.isError()) {
       return CustomErrorWidget(
         title: LocaleKeys.pokemon_occurred_pokemon,

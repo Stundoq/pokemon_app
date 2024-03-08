@@ -2,8 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tdd_clean_architecture_mvvm/core/extension/response_event.dart';
+import 'package:flutter_tdd_clean_architecture_mvvm/core/extension/router.dart';
 import 'package:flutter_tdd_clean_architecture_mvvm/main.dart';
 import 'package:flutter_tdd_clean_architecture_mvvm/presentation/pages/berry/berry_viewmodel.dart';
+import 'package:flutter_tdd_clean_architecture_mvvm/presentation/pages/berry_detail/berry_detail_page.dart';
 
 import '../../../../core/api_helper/api_response.dart';
 import '../../../../core/enums/snack_bar_type.dart';
@@ -52,7 +54,9 @@ class _AllBerryWidgetState extends ConsumerState<AllBerryWidget> {
 
 
     return ItemWidget(
-      onTap: () {},
+      onTap: () {
+        BerryDetailPage(name: berryNameByIndex,).scaleTransitionPush(context: context);
+      },
       title: berryNameByIndex,
       subtitle: index.toString(),
       isActive: berryInFavorites,

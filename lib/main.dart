@@ -6,6 +6,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tdd_clean_architecture_mvvm/data/models/pokemon_detail_model.dart';
 import 'package:flutter_tdd_clean_architecture_mvvm/presentation/pages/berry/berry_viewmodel.dart';
 import 'package:flutter_tdd_clean_architecture_mvvm/presentation/pages/berry/berry_viewmodel_imp.dart';
+import 'package:flutter_tdd_clean_architecture_mvvm/presentation/pages/berry_detail/berry_detail_viewmodel.dart';
+import 'package:flutter_tdd_clean_architecture_mvvm/presentation/pages/berry_detail/berry_detail_viewmodel_imp.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'core/certificates/network_certificates.dart';
 import 'core/theme/my_theme.dart';
@@ -80,6 +82,8 @@ final pokemonViewModelImp = ChangeNotifierProvider<PokemonViewModel>((ref) => Po
 final pokemonDetailViewModelImp = ChangeNotifierProvider<PokemonDetailViewModel>((ref) => PokemonDetailViewModelImp());
 
 final berryViewModelImp = ChangeNotifierProvider<BerryViewModel>((ref) => BerryViewModelImp());
+final berryDetailViewModelImp = ChangeNotifierProvider<BerryDetailViewModel>((ref) => BerryDetailViewModelImp());
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

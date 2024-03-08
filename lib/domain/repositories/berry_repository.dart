@@ -1,3 +1,4 @@
+import 'package:flutter_tdd_clean_architecture_mvvm/domain/entities/berry_entities/berry_detail_entity.dart';
 import 'package:flutter_tdd_clean_architecture_mvvm/domain/entities/berry_entities/berry_item_entity.dart';
 import 'package:flutter_tdd_clean_architecture_mvvm/domain/entities/berry_entities/berry_list_entity.dart';
 
@@ -18,5 +19,5 @@ abstract class BerryRepository {
 
   Future<BerryItemEntity?> removeBerryByName({required String key});
 
-
+  Future<BerryDetailEntity> getBerryByName(String name);
 }

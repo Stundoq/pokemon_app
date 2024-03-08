@@ -1,7 +1,7 @@
+import 'package:flutter_tdd_clean_architecture_mvvm/domain/entities/berry_entities/berry_detail_entity.dart';
 import 'package:flutter_tdd_clean_architecture_mvvm/domain/entities/berry_entities/berry_item_entity.dart';
 import 'package:flutter_tdd_clean_architecture_mvvm/domain/entities/berry_entities/berry_list_entity.dart';
 import 'package:flutter_tdd_clean_architecture_mvvm/domain/repositories/berry_repository.dart';
-
 import '../../../core/usecase/base_usecase.dart';
 
 class GetBerry extends BaseUseCase<Future<BerryListEntity>, ParamsForBerry> {
@@ -110,5 +110,25 @@ class RemoveBerryByName extends BaseUseCase<Future<BerryItemEntity?>, ParamsKey>
     return await berryRepository.removeBerryByName(key: params.key);
   }
 }
+
+class GetBerryByName extends BaseUseCase<Future<BerryDetailEntity>, ParamsForBerryByName> {
+  final BerryRepository berryRepository;
+
+  const GetBerryByName(this.berryRepository);
+
+  @override
+  Future<BerryDetailEntity> execute(ParamsForBerryByName params) async {
+    return await berryRepository.getBerryByName(params.name);
+  }
+}
+
+class ParamsForBerryByName {
+  final String name;
+
+  const ParamsForBerryByName({
+    required this.name,
+  });
+}
+
 
 

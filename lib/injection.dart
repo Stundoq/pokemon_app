@@ -59,7 +59,8 @@ void initializeDependencies() async {
     ),
   );
 
-  //Usecases
+  //USACASES
+  //Pokemon Usecases
   injector.registerLazySingleton<GetPokemon>(() => GetPokemon(injector()));
   injector.registerLazySingleton<IsPokemonInFavorites>(
       () => IsPokemonInFavorites(injector()));
@@ -73,6 +74,7 @@ void initializeDependencies() async {
       () => ClearAllFavoritePokemon(injector()));
   injector.registerLazySingleton<GetPokemonByName>(
       () => GetPokemonByName(injector()));
+  //Berry Usecases
   injector.registerLazySingleton<GetBerry>(() => GetBerry(injector()));
   injector.registerLazySingleton<GetBerryItemList>(
           () => GetBerryItemList(injector()));
@@ -84,4 +86,6 @@ void initializeDependencies() async {
           () => AddBerryByName(injector()));
   injector.registerLazySingleton<RemoveBerryByName>(
           () => RemoveBerryByName(injector()));
+  injector.registerLazySingleton<GetBerryByName>(
+          () => GetBerryByName(injector()));
 }
